@@ -1,0 +1,51 @@
+{% extends 'admin/layout_admin.html' %}
+
+{% block title %}
+    <title>Ajouter</title>
+{% endblock %}
+
+{% block body %}
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+
+  <div class="container-1">
+    <h1 class="objet-1">Ajout d'un meuble</h1>
+</div>
+
+<fieldset>
+
+  <form method="post" action="/admin/article/valid-add" enctype="multipart/form-data">
+
+    <label for="nom">Nom meuble</label>
+    <br><input class="width" id="nom" type="text" name="nom" placeholder="ex : Citizen">
+
+    <br><label for="prix">Prix</label>
+    <br><input class="width" id="prix" type="number" name="prix">
+
+    <br><label for="stock">Stock</label>
+    <br><input class="width" id="stock" type="number" name="stock">
+
+    <br><label for="type_meuble">Libellé</label>
+    <br><select class="width" id="type_meuble" name="type_meuble">
+        <option value="0">Choisissez un libellé pour le meuble</option>
+        {% for type in types_meubles %}
+          <option value="{{ type.type_meuble_id }}">{{ type.type_meuble_libelle }}</option>
+        {% endfor %}
+        </select><br>
+
+
+    <br><label for="marque">Marque</label>
+    <br><select class="width" id="marque" name="marque">
+        <option value="0">Choisissez une marque pour le meuble</option>
+        {% for marque in marques %}
+            <option value="{{ marque.marque_id }}">{{ marque.marque_libelle }}</option>
+        {% endfor %}
+        </select><br>
+
+    <br><input class="width" type="submit" value="ajouter">
+
+  </form>
+</fieldset>
+
+{% endblock %}

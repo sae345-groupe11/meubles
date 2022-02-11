@@ -1,0 +1,46 @@
+{% extends 'admin/layout_admin.html' %}
+
+{% block title %}
+    <title>Afficher</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container-1">
+	<h1 class="objet-1">Affichage des types meubles</h1>
+</div>
+
+<table class='table1'>
+
+	<tr class="ajouter">
+		<td><a href="/admin/type-article/add">Ajouter</a></td>
+	</tr>
+
+	<tbody class="container-3-1">
+
+		<tr class="container-3-2-05">
+			<td class="titre-table">Id</td><td class="titre-table">Libellé</td><td class="titre-table">Nbr meubles concernés</td><td class="titre-table">Modifier</td><td class="titre-table">Supprimer</td>
+			{% for type in types_meubles %}
+			<td>{{ type.type_meuble_id }}</td>
+			<td>{{ type.type_meuble_libelle }}</td>
+
+				{% for stock in stocks %}
+					{% if stock.type_meuble_id == type.type_meuble_id %}
+						<td><span class="red22">{{ stock.nombre_modeles }}</span></td>
+					{% endif %}
+				{% endfor %}
+
+			<td class="editer">
+				<a href="/admin/type-article/edit/{{ type.type_meuble_id }}">Modifier</a>
+			</td>
+			<td class="supprimer"><a href="/admin/type-article/delete/{{ type.type_meuble_id }}">Supprimer</a>
+			</td>
+			{% endfor %}
+		</tr>
+
+	</tbody>
+
+</table>
+
+
+{% endblock %}

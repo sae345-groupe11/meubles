@@ -1,0 +1,163 @@
+h1 { color: green;}
+
+br , h2 { color: blue; }
+
+.container-3-1 {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 1em;
+}
+
+.container-3-1 tr {
+	border-collapse: collapse;
+}
+
+.container-3-2-05 {
+	background-color: #d0d3d4;
+	border-collapse: collapse;
+	border: 1px solid #17202a;
+	box-shadow: 3px 3px 3px #17202a;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.titre-table {
+	background-color: #707b7c;
+	margin-bottom: 2%;
+	font-size: 20px;
+}
+
+.editer {
+	background-color: #3498db;
+	border: 1px solid #3498db;
+	box-shadow: 1px 1px 1px #17202a;
+	margin-left: 2%;
+	margin-right: 1.5%;
+	margin-bottom: 3%;
+	text-align: center;
+}
+
+.editer a {
+	color: #f0f3f4;	
+}
+
+.ajouter {
+	background-color: #2ecc71;
+	border-collapse: collapse;
+	border: 1px solid #2ecc71;
+	box-shadow: 3px 3px 3px #17202a;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20%;
+	margin-bottom: 10%;
+	margin-right: -60%;
+}
+
+.ajouter td a {
+	font-size: 20px;
+	color: #f0f3f4;
+}
+
+.supprimer {
+	background-color: #e74c3c;
+	border: 1px solid #e74c3c;
+	box-shadow: 1px 1px 1px #17202a;
+	margin-left: 1.5%;
+	margin-right: 2%;
+	margin-bottom: 3%;
+	text-align: center;
+	color: #f0f3f4;
+}
+
+.supprimer a {
+	color: #f0f3f4;	
+}
+
+.titre-table {
+	background-color: #707b7c;
+	margin-left: 4%;
+	margin-bottom: 2%;
+	font-size: 20px;
+}
+
+.table1 {
+	border-collapse: collapse;
+	display: block;
+	margin-top: 3%;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.red38 {
+	color: #e74c3c;
+	font-size: 38px;
+}
+
+.red30 {
+	color: #e74c3c;
+	font-size: 30px;
+}
+
+.red22 {
+	color: #e74c3c;
+	font-size: 22px;
+}
+
+.red18 {
+	color: #e74c3c;
+	font-size: 18px;
+}
+
+.font-size18 {
+	font-size: 18px;
+}
+
+.width {
+	width : 25%;
+}
+
+.container-1 {
+	margin-top: 5%;
+	background-color: #d0d3d4;
+}
+
+.objet-1 {
+	margin-left: 5%;
+	padding: 10px;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #2c3e50;
+	font-size: 38px;
+	color: #2c3e50;
+}
+
+.container-table-1 {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 1em;
+}	
+
+.container-table-2 {
+	background-color: #d0d3d4;
+	border-collapse: collapse;
+	border: 1px solid #17202a;
+	box-shadow: 3px 3px 3px #17202a;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+}
+
+.table-cards {
+	margin-top: 3%;
+	margin-left: 1%;
+	margin-right: 1%;
+	border-collapse: collapse;  
+	display: block;
+}
+
+.collapse td {
+	border-collapse: collapse;
+	border: 1px solid #17202a;
+}
+
+

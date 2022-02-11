@@ -1,0 +1,57 @@
+{% extends 'admin/layout_admin.html' %}
+{% block title %}
+    <title>Modifier</title>
+{% endblock %}
+
+{% block body %}
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+
+  <div class="container-1">
+    <h1 class="objet-1">Modification du meuble : <span class="red38">{{ meuble.nom }}</span></h1>
+</div>
+
+<fieldset>
+
+  <form method="post" action="/admin/article/valid-edit" enctype="multipart/form-data">
+
+    <input name="id" type="hidden" value="{{ meuble.meuble_id }}">
+
+    <label for="nom">Nom meuble</label>
+    <br><input class="width" id="nom" type="text" name="nom" placeholder="ex : Citizen" value="{{ meuble.nom }}">
+
+    <br><label for="prix">Prix</label>
+    <br><input class="width" id="prix" type="number" name="prix" value="{{ meuble.prix_unit }}">
+
+    <br><label for="stock">Stock</label>
+    <br><input class="width" id="stock" type="number" name="stock" value="{{ meuble.stock }}">
+
+    <br><label for="type_meuble">Libellé</label>
+    <br><select class="width" id="type_meuble" name="type_meuble">
+        <option value="{{ meuble.type_meuble_id }}">{{ meuble.type_meuble_libelle }}</option>
+        {% for type in types_meubles %}
+            {% if type.type_meuble_id != meuble.type_meuble_id %}
+                <option value="{{ type.type_meuble_id }}">{{ type.type_meuble_libelle }}</option>
+            {% endif %}
+            {% endfor %}
+        </select><br>
+
+
+    <br><label for="marque">Marque</label>
+    <br><select class="width" id="marque" name="marque">
+        <option value="{{ meuble.marque_id }}">{{ meuble.marque_libelle }}</option>
+        {% for marque in marques %}
+            {% if marque.marque_id != meuble.marque_id %}
+                <option value="{{ marque.marque_id }}">{{ marque.marque_libelle }}</option>
+            {% endif %}
+        {% endfor %}
+        </select><br>
+
+    <br><input class="width" type="submit" value="modifier">
+
+  </form>
+</fieldset>
+
+
+{% endblock %}

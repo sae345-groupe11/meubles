@@ -1,0 +1,25 @@
+{% extends 'admin/layout_admin.html' %}
+
+{% block title %}
+    <title>Supprimer</title>
+{% endblock %}
+
+{% block body %}
+<h3 style="margin-top: 5%;">Suppression du type meuble <span class="red38">{{ libelle }}</span> impossible</h3>
+<br>
+<h3>Il y a <span style="color:red;"> {{ nombre }} </span> meuble(s) à supprimer</h3>
+<br>
+<ul>
+{% if meubles | length >= 1 %}
+
+        {% for meuble in meubles %}
+        <li>
+                 nom : {{ meuble.nom }} -  stock : {{ meuble.stock }} - <a class="btn btn-outline-danger" href="/admin/type-article/meuble-delete/{{ meuble.meuble_id }}" >supprimer</a>
+        </li><br>
+        {% endfor %}
+
+{% endif %}
+</ul>
+<a class="btn btn-outline-warning" href="/admin/type-article/show" >annuler</a>
+{% endblock %}
+

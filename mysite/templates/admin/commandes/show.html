@@ -1,0 +1,83 @@
+{% extends "admin/layout_admin.html" %}
+{% block body %}
+    <div class="container-fluid">
+
+        {% if articles_commande %}
+        <h3>Recapitulatifs de la commande selectionnée</h3>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr><th>Nom meuble</th><th>Quantité</th><th>Prix</th><th>Prix total</th></tr>
+            </thead>
+            <tbody>
+                    {% for ligne in articles_commande %}
+                        <tr>
+                            <td>{{ ligne.nom }}</td>
+                            <td>{{ ligne.quantite }}</td>
+                            <td>{{ ligne.prix_unit }} €</td>
+                            <td> {{ "{:,.2f} €".format(ligne.prix_unit * ligne.quantite) }}  </td>
+                        </tr>
+                    {% endfor %}
+
+            </tbody>
+        </table>
+        <hr>
+    {% endif %}
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">Résumé des commandes</p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>Nom client</th>
+                        <th>Date de commande</th>
+                        <th>Nombre d'articles</th>
+                        <th>Coût total</th>
+                        <th>Etat de la commande</th>
+                        <th style="text-align: center;">Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for commande in commandes %}
+                            <tr id="" {#% if commande.etat.nom == "Produit indisponible" %#} style="background: #FFD600; font-weight: bold;" {#% endif %#}>
+                                <td style="background: #c0402f; font-weight: bold;">{{ commande.username }}</td>
+                                <td>{{ commande.date_achat.strftime('%d-%m-%Y') }}</td>
+                                <td> {{ commande.nbr_articles }} </td>
+                                <td>
+                                    {{ "{:,.2f} €".format(commande.prix_total) }}
+                                </td>
+                                <td style="text-align: center;">
+
+                                    <form action="/admin/commande/valider" style="background-color: #996d0d; padding: 5px;" method="post">
+                                        <input type="hidden" name="idCommande" value="{{ commande.commande_id }}">
+                                        <select name="changerEtat">
+                                        <option value="{{ commande.etat_id }}">{{ commande.libelle }}</option>
+                                        {% for etat in etats %}
+                                            {% if etat.etat_id != commande.etat_id %}
+                                                <option value="{{ etat.etat_id }}">{{ etat.libelle }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </select>
+                                        <input type="submit" value="changer">
+                                    </form>
+
+                                </td>
+                                <td style="text-align: center;">
+                                    <form action="/admin/commande/show" style="display: inline-block;"  method="post">
+                                        <input type="hidden" name="idCommande" value="{{ commande.commande_id }}">
+                                        <button class="btn btn-primary" > Details </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- end card-body-->
+
+    </div>
+</div>
+
+{% endblock %}

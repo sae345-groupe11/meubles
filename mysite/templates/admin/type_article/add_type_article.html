@@ -1,0 +1,27 @@
+{% extends 'admin/layout_admin.html' %}
+
+{% block title %}
+    <title>Ajouter</title>
+{% endblock %}
+
+{% block body %}
+{% if error %}
+<p class=error><strong>Error:</strong> {{ error }}
+{% endif %}
+<div class="container-1">
+  <h1 class="objet-1">Ajout d'un type meuble</h1>
+</div>
+
+<fieldset>
+
+  <form method="post" action="/admin/type-article/valid-add">
+
+    <label for="libelle">Nom libellé</label>
+    <br><input class="width" id="libelle" type="text" name="libelle" placeholder="ex : Fauteuils"><br>
+
+    <br><input class="width" type="submit" value="ajouter">
+
+  </form>
+</fieldset>
+
+{% endblock %}
