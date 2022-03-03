@@ -71,5 +71,3 @@ app.register_blueprint(admin_dataviz_article)
 if __name__ == '__main__':
     app.run()
 
-# id = asim.sak@edu.univ-fcomte.fr
-# mdp = As123321
